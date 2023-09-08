@@ -22,6 +22,7 @@ import {randomUUID} from "node:crypto"
         if(search){
             return video.title.includes(search)
         }
+        return true
       })
     }
     create(video){
