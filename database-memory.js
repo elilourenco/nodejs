@@ -5,7 +5,8 @@ import {randomUUID} from "node:crypto"
 
     list(){
 
-      return Array.from(this.#videos.values()).map((videoArray)=>{
+      return Array.from(this.#videos.values())
+      .map((videoArray)=>{
 
         const id = videoArray[0]
         const data = videoArray[1]
@@ -15,6 +16,12 @@ import {randomUUID} from "node:crypto"
             ...data,
         }
 
+      })
+
+      .filter(video=>{
+        if(search){
+            return video.title.includes(search)
+        }
       })
     }
     create(video){

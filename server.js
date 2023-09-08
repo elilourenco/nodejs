@@ -12,7 +12,7 @@ import  {fastify} from "fastify"
 import { DatabaseMemory} from "./database-memory.js"
 
 const server = fastify()
-const database=  new DatabaseMemory()
+const database = new DatabaseMemory()
 
 server.post("/videos",(request,reply)=>{
 
@@ -30,17 +30,18 @@ server.post("/videos",(request,reply)=>{
 })
 
 server.get("/videos",(request, reply)=>{
-    const videos = database.list()
 
-    console.log(videos)
-    
+    const search= request.query.search
+
+    console.log(search)
+    const videos = database.list()
 
     return videos
     
 })
- server.put("/videos/:id",(request, reply) =>{
-    const videoId = request.params.id
 
+server.put("/videos/:id",(request, reply) =>{
+    const videoId = request.params.id
     const {title,description,duration}= request.body
 
     database.update(videoId,{
@@ -51,7 +52,7 @@ server.get("/videos",(request, reply)=>{
     })
 
     reply.status(204).send()
- })
+})
 
 server.delete("/videos/:id",(request, reply)=>{
     const videoId=  request.params.id

@@ -4,13 +4,13 @@ Content-Type: application/json
 {
     "title": "video 01",
     "description": "Esse é o primeiro video",
-    "duraction" :100
+    "duraction" :180
 }
 
 
 ###
 
-GET http://localhost:3333/videos
+GET http://localhost:3333/videos?search=node
 
 
 ###
